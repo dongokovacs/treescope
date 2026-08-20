@@ -25,7 +25,6 @@ function makePlant(overrides: Partial<Plant>): Plant {
     salinity: null,
     toxicity: null,
     drought: null,
-    hungarianName: null,
     ...overrides,
   };
 }

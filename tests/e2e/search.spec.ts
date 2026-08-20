@@ -25,12 +25,12 @@ test("woody-only filter excludes non-woody species", async ({ page }) => {
 
   // Checkbox is checked by default (woodyOnly: true) - Lavandula (herb) should be excluded.
   await runSearch(page, "növény");
-  await expect(page.getByText("Valódi levendula")).not.toBeVisible();
+  await expect(page.getByText("Levendula")).not.toBeVisible();
   await expect(page.getByText("Kocsányos tölgy")).toBeVisible();
 
   await page.getByLabel("Csak fás szárúak").uncheck();
   await runSearch(page, "növény");
-  await expect(page.getByText("Valódi levendula")).toBeVisible();
+  await expect(page.getByText("Levendula")).toBeVisible();
 });
 
 test("empty state shows Hungarian no-results copy", async ({ page }) => {

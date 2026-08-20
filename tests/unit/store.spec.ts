@@ -25,7 +25,6 @@ function makePlant(id: number): Plant {
     salinity: null,
     toxicity: null,
     drought: null,
-    hungarianName: null,
   };
 }
 
