@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { fetchTrefle } from "../_lib/trefleClient";
-import { getCached, setCached } from "../_lib/cache";
-import { respondFromUpstream } from "../_lib/respond";
+import { fetchTrefle } from "../_lib/trefleClient.js";
+import { getCached, setCached } from "../_lib/cache.js";
+import { respondFromUpstream } from "../_lib/respond.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const q = typeof req.query.q === "string" ? req.query.q.trim() : "";
