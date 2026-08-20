@@ -39,7 +39,7 @@ export function PlantCard({ plant }: PlantCardProps) {
         {plant.image ? (
           <img
             src={plant.image}
-            alt={plant.commonName ?? plant.scientificName}
+            alt={plant.hungarianName ?? plant.scientificName}
             className="h-full w-full object-cover"
           />
         ) : (
@@ -63,7 +63,7 @@ export function PlantCard({ plant }: PlantCardProps) {
       <div className="flex flex-col gap-3 p-4 pt-3.5">
         <div>
           <h3 className="m-0 font-display text-lg font-semibold text-ink">
-            {plant.commonName || plant.scientificName}
+            {plant.hungarianName || plant.scientificName}
           </h3>
           <p className="m-0 mt-0.5 text-xs italic text-ink-faint">{plant.scientificName}</p>
         </div>

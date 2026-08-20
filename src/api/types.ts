@@ -24,6 +24,8 @@ export interface Plant {
   /** True when growthRate/light came from src/lib/genusEstimates.ts, not the species' own Trefle data */
   growthRateEstimated: boolean;
   lightEstimated: boolean;
+  /** Curated Hungarian name, not a Trefle field - see src/lib/plantNames.ts */
+  hungarianName: string | null;
 }
 
 export type TrefleErrorKind = "auth" | "rateLimit" | "network" | "notFound" | "unknown";

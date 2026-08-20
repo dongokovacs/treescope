@@ -1,5 +1,6 @@
 import { cmToM, droughtScore } from "../lib/metrics";
 import { estimateGrowthRateForGenus, estimateLightForGenus } from "../lib/genusEstimates";
+import { hungarianPlantName } from "../lib/plantNames";
 import { TrefleApiError, type Plant } from "./types";
 import type {
   TrefleSearchHit,
@@ -91,6 +92,7 @@ export function normalizePlant(d: TrefleSpeciesDetail): Plant {
     drought: droughtScore(soilHumidity, minPrecip),
     growthRateEstimated: rawGrowthRate == null && growthRate != null,
     lightEstimated: rawLight == null && light != null,
+    hungarianName: hungarianPlantName(d.scientific_name),
   };
 }
 

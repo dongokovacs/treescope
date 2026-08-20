@@ -76,13 +76,13 @@ export function CompareView() {
                 <div className="flex items-start justify-between gap-1">
                   <div>
                     <div className="font-display text-sm font-semibold text-ink">
-                      {p.commonName || p.scientificName}
+                      {p.hungarianName || p.scientificName}
                     </div>
                     <div className="text-xs italic text-ink-faint">{p.scientificName}</div>
                   </div>
                   <button
                     onClick={() => toggleCompare(p)}
-                    aria-label={`${p.commonName ?? p.scientificName} eltávolítása`}
+                    aria-label={`${p.hungarianName ?? p.scientificName} eltávolítása`}
                     className="shrink-0 rounded-full border border-line p-1 text-ink-soft"
                   >
                     <X size={12} />

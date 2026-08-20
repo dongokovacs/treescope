@@ -27,6 +27,7 @@ function makePlant(overrides: Partial<Plant>): Plant {
     drought: null,
     growthRateEstimated: false,
     lightEstimated: false,
+    hungarianName: null,
     ...overrides,
   };
 }

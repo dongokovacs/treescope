@@ -27,6 +27,7 @@ function makePlant(id: number): Plant {
     drought: null,
     growthRateEstimated: false,
     lightEstimated: false,
+    hungarianName: null,
   };
 }
 
