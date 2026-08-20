@@ -28,6 +28,22 @@ describe("hungarianPlantName", () => {
     expect(hungarianPlantName("QUERCUS ROBUR")).toBe("Kocsányos tölgy");
   });
 
+  it("covers Quercus phellos specifically, not the generic genus fallback", () => {
+    expect(hungarianPlantName("Quercus phellos")).toBe("Fűzlevelű tölgy");
+  });
+
+  it("gives each Fraxinus species its own distinct name instead of a generic genus name", () => {
+    expect(hungarianPlantName("Fraxinus excelsior")).toBe("Magas kőris");
+    expect(hungarianPlantName("Fraxinus pennsylvanica")).toBe("Amerikai kőris");
+    expect(hungarianPlantName("Fraxinus americana")).toBe("Fehér kőris");
+    expect(hungarianPlantName("Fraxinus ornus")).toBe("Virágos kőris");
+  });
+
+  it("covers common Corylus species", () => {
+    expect(hungarianPlantName("Corylus avellana")).toBe("Közönséges mogyoró");
+    expect(hungarianPlantName("Corylus colurna")).toBe("Török mogyoró");
+  });
+
   it("falls back to the genus-level name when no species override exists", () => {
     expect(hungarianPlantName("Quercus lobata")).toBe("Tölgy");
     expect(hungarianPlantName("Populus × berolinensis")).toBe("Nyár");

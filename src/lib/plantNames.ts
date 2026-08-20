@@ -28,6 +28,7 @@ const SPECIES_HU_NAMES: Record<string, string> = {
   "quercus bicolor": "mocsári fehér tölgy",
   "quercus faginea": "portugál tölgy",
   "quercus frainetto": "magyar tölgy",
+  "quercus phellos": "fűzlevelű tölgy",
 
   // Populus (poplar) - sourced from hu.wikipedia.org/wiki/Nyárfafajok_listája
   "populus alba": "fehér nyár",
@@ -48,6 +49,20 @@ const SPECIES_HU_NAMES: Record<string, string> = {
   "populus deltoides": "folyóparti nyár",
   "populus trichocarpa": "szőrös termésű nyár",
   "populus tremula": "rezgő nyár",
+
+  // Fraxinus (ash) - sourced from hu.wikipedia.org/wiki/Kőris and TERRA Alapítvány
+  "fraxinus excelsior": "magas kőris",
+  "fraxinus pennsylvanica": "amerikai kőris",
+  "fraxinus angustifolia": "keskenylevelű kőris",
+  "fraxinus americana": "fehér kőris",
+  "fraxinus ornus": "virágos kőris",
+  "fraxinus nigra": "fekete kőris",
+  "fraxinus quadrangulata": "kék kőris",
+  "fraxinus latifolia": "oregoni kőris",
+
+  // Corylus (hazel) - sourced from hu.wikipedia.org/wiki/Török_mogyoró, /wiki/Európai_mogyoró
+  "corylus avellana": "közönséges mogyoró",
+  "corylus colurna": "török mogyoró",
 
   // Other common species (previously curated set)
   "robinia pseudoacacia": "fehér akác",
@@ -95,6 +110,7 @@ const GENUS_HU_NAMES: Record<string, string> = {
   abies: "jegenyefenyő",
   lavandula: "levendula",
   rosa: "rózsa",
+  corylus: "mogyoró",
 };
 
 function capitalizeFirst(text: string): string {
