@@ -12,10 +12,23 @@ interface MetricRow {
 const CORE_ROWS: MetricRow[] = [
   { label: "Aszálytűrés (becslés)", value: (p) => (p.drought != null ? `${p.drought}/5` : "nincs adat") },
   { label: "Vízigény", value: (p) => waterNeedLabel(p.soilHumidity) ?? "nincs adat" },
-  { label: "Növekedési ütem", value: (p) => growthLabel(p.growthRate) ?? "nincs adat" },
+  {
+    label: "Növekedési ütem",
+    value: (p) => {
+      const label = growthLabel(p.growthRate);
+      if (!label) return "nincs adat";
+      return p.growthRateEstimated ? `${label} (becslés)` : label;
+    },
+  },
   { label: "Magasság", value: (p) => (p.heightMaxCm ? `${cmToM(p.heightMaxCm)} m` : "nincs adat") },
   { label: "Korona szélesség", value: (p) => (p.spreadCm ? `${cmToM(p.spreadCm)} m` : "nincs adat") },
-  { label: "Fény", value: (p) => (typeof p.light === "number" ? `${p.light}/10` : "nincs adat") },
+  {
+    label: "Fény",
+    value: (p) =>
+      typeof p.light === "number"
+        ? `${p.light}/10${p.lightEstimated ? " (becslés)" : ""}`
+        : "nincs adat",
+  },
 ];
 
 const DETAIL_ROWS: MetricRow[] = [

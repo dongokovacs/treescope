@@ -74,7 +74,11 @@ export function PlantCard({ plant }: PlantCardProps) {
         </div>
 
         <div className="grid grid-cols-2 gap-x-2 gap-y-2">
-          <StatBadge icon={<TrendingUp size={13} className="text-primary" />} label="Ütem" value={label} />
+          <StatBadge
+            icon={<TrendingUp size={13} className="text-primary" />}
+            label="Ütem"
+            value={label ? (plant.growthRateEstimated ? `${label} (becslés)` : label) : null}
+          />
           <StatBadge
             icon={<Ruler size={13} className="text-primary" />}
             label="Magasság"
@@ -88,7 +92,11 @@ export function PlantCard({ plant }: PlantCardProps) {
           <StatBadge
             icon={<Sun size={13} className="text-primary" />}
             label="Fény"
-            value={typeof plant.light === "number" ? `${plant.light}/10` : null}
+            value={
+              typeof plant.light === "number"
+                ? `${plant.light}/10${plant.lightEstimated ? " (becslés)" : ""}`
+                : null
+            }
           />
         </div>
 

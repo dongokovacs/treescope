@@ -21,6 +21,9 @@ export interface Plant {
   toxicity: string | null;
   /** Estimated, not a native Trefle field - see src/lib/metrics.ts */
   drought: number | null;
+  /** True when growthRate/light came from src/lib/genusEstimates.ts, not the species' own Trefle data */
+  growthRateEstimated: boolean;
+  lightEstimated: boolean;
 }
 
 export type TrefleErrorKind = "auth" | "rateLimit" | "network" | "notFound" | "unknown";

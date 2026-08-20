@@ -1,4 +1,5 @@
 import { cmToM, droughtScore } from "../lib/metrics";
+import { estimateGrowthRateForGenus, estimateLightForGenus } from "../lib/genusEstimates";
 import { TrefleApiError, type Plant } from "./types";
 import type {
   TrefleSearchHit,
@@ -60,6 +61,12 @@ export function normalizePlant(d: TrefleSpeciesDetail): Plant {
   const heightMaxCm =
     pick<number>(spec, ["maximum_height", "cm"]) ?? pick<number>(spec, ["average_height", "cm"]);
 
+  const rawGrowthRate = spec?.growth_rate ?? null;
+  const growthRate = rawGrowthRate ?? estimateGrowthRateForGenus(d.scientific_name);
+
+  const rawLight = typeof growth?.light === "number" ? growth.light : null;
+  const light = rawLight ?? estimateLightForGenus(d.scientific_name);
+
   return {
     id: d.id,
     slug: d.slug,
@@ -68,10 +75,10 @@ export function normalizePlant(d: TrefleSpeciesDetail): Plant {
     family: d.family_common_name || d.family,
     image: d.image_url,
     ligneousType: spec?.ligneous_type ?? null,
-    growthRate: spec?.growth_rate ?? null,
+    growthRate,
     heightMaxCm,
     spreadCm: pick<number>(growth, ["spread", "cm"]),
-    light: growth?.light ?? null,
+    light,
     soilHumidity,
     minPrecip,
     maxPrecip,
@@ -82,6 +89,8 @@ export function normalizePlant(d: TrefleSpeciesDetail): Plant {
     salinity: growth?.soil_salinity ?? null,
     toxicity: spec?.toxicity ?? null,
     drought: droughtScore(soilHumidity, minPrecip),
+    growthRateEstimated: rawGrowthRate == null && growthRate != null,
+    lightEstimated: rawLight == null && light != null,
   };
 }
 
