@@ -1,4 +1,5 @@
 import { cmToM, droughtScore } from "../lib/metrics";
+import { hungarianPlantName } from "../lib/plantNames";
 import { TrefleApiError, type Plant } from "./types";
 import type {
   TrefleSearchHit,
@@ -82,6 +83,7 @@ export function normalizePlant(d: TrefleSpeciesDetail): Plant {
     salinity: growth?.soil_salinity ?? null,
     toxicity: spec?.toxicity ?? null,
     drought: droughtScore(soilHumidity, minPrecip),
+    hungarianName: hungarianPlantName(d.scientific_name),
   };
 }
 

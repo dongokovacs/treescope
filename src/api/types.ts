@@ -21,6 +21,8 @@ export interface Plant {
   toxicity: string | null;
   /** Estimated, not a native Trefle field - see src/lib/metrics.ts */
   drought: number | null;
+  /** Curated Hungarian name, not a Trefle field - see src/lib/plantNames.ts */
+  hungarianName: string | null;
 }
 
 export type TrefleErrorKind = "auth" | "rateLimit" | "network" | "notFound" | "unknown";

@@ -7,7 +7,7 @@ test("comparison flow: select, view side-by-side, remove, and cap at 3", async (
   await page.getByLabel("Csak fás szárúak").uncheck();
   await runSearch(page, "kert");
 
-  const cards = ["Kocsányos tölgy", "Mezei juhar", "Levendula"].map((name) =>
+  const cards = ["Kocsányos tölgy", "Mezei juhar", "Valódi levendula"].map((name) =>
     page.locator("h3", { hasText: name }).locator("..").locator("..").locator(".."),
   );
 
@@ -16,7 +16,7 @@ test("comparison flow: select, view side-by-side, remove, and cap at 3", async (
   }
 
   await page.getByRole("button", { name: /Összehasonlítás \(3\)/ }).click();
-  for (const name of ["Kocsányos tölgy", "Mezei juhar", "Levendula"]) {
+  for (const name of ["Kocsányos tölgy", "Mezei juhar", "Valódi levendula"]) {
     await expect(page.getByRole("columnheader").filter({ hasText: name })).toBeVisible();
   }
 
@@ -25,7 +25,7 @@ test("comparison flow: select, view side-by-side, remove, and cap at 3", async (
   // trying to add a plant that was already at the cap.
   await expect(page.getByRole("button", { name: /Összehasonlítás \(3\)/ })).toBeVisible();
 
-  await page.getByRole("columnheader").filter({ hasText: "Levendula" }).getByRole("button").click();
+  await page.getByRole("columnheader").filter({ hasText: "Valódi levendula" }).getByRole("button").click();
   await expect(page.getByRole("button", { name: /Összehasonlítás \(2\)/ })).toBeVisible();
-  await expect(page.getByRole("columnheader").filter({ hasText: "Levendula" })).not.toBeVisible();
+  await expect(page.getByRole("columnheader").filter({ hasText: "Valódi levendula" })).not.toBeVisible();
 });

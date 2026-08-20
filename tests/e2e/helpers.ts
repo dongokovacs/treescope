@@ -5,7 +5,7 @@ import { speciesDetail } from "../fixtures/trefleSpecies";
 const DETAILS: Record<number, ReturnType<typeof speciesDetail>> = {
   1: speciesDetail({
     id: 1,
-    common_name: "Kocsányos tölgy",
+    common_name: "Pedunculate oak",
     scientific_name: "Quercus robur",
     ligneous_type: "tree",
     growth_rate: "slow",
@@ -15,7 +15,7 @@ const DETAILS: Record<number, ReturnType<typeof speciesDetail>> = {
   }),
   2: speciesDetail({
     id: 2,
-    common_name: "Mezei juhar",
+    common_name: "Field maple",
     scientific_name: "Acer campestre",
     ligneous_type: "tree",
     growth_rate: "fast",
@@ -25,7 +25,7 @@ const DETAILS: Record<number, ReturnType<typeof speciesDetail>> = {
   }),
   3: speciesDetail({
     id: 3,
-    common_name: "Levendula",
+    common_name: "English lavender",
     scientific_name: "Lavandula angustifolia",
     ligneous_type: "herb",
     growth_rate: "moderate",
