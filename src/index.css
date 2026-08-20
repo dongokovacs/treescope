@@ -1,0 +1,73 @@
+@import "tailwindcss";
+@import "@fontsource-variable/fraunces";
+@import "@fontsource/public-sans/400.css";
+@import "@fontsource/public-sans/500.css";
+@import "@fontsource/public-sans/600.css";
+@import "@fontsource/public-sans/700.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+@theme {
+  --color-bg: #F4F7EF;
+  --color-bg-alt: #EAF0E1;
+  --color-ink: #1E2B1A;
+  --color-ink-soft: #445841;
+  --color-ink-faint: #8A9385;
+  --color-primary: #3F6B44;
+  --color-primary-deep: #2A4A2E;
+  --color-accent-bark: #A15C36;
+  --color-accent-water: #3E7CA6;
+  --color-line: #D8E0CC;
+  --color-card: #FFFFFF;
+  --color-error: #7A3B1C;
+  --color-error-bg: #FBEEE8;
+  --color-error-border: #E3B79A;
+  --color-soil-top: #E4D3B0;
+  --color-soil-mid: #C7A76C;
+  --color-soil-deep: #8B5E3C;
+  --color-soil-bottom: #5B3A22;
+
+  --font-display: "Fraunces Variable", serif;
+  --font-body: "Public Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --radius-xl2: 16px;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@utility bg-soil-gradient {
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-soil-top) 0%,
+    var(--color-soil-mid) 40%,
+    var(--color-soil-deep) 75%,
+    var(--color-soil-bottom) 100%
+  );
+}
+
+@utility bg-hero-gradient {
+  background-image: linear-gradient(180deg, var(--color-bg-alt) 0%, var(--color-bg) 100%);
+}
